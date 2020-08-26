@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///src/stylus/index.styl"],"names":[],"mappings":"AAAA;EACE,WAAW;AACb;AACA;EACE,WAAW;AACb","file":"main.css","sourcesContent":["body {\n  color: #f00;\n}\nbody p {\n  color: #000;\n}\n"],"sourceRoot":""}
