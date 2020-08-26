@@ -1,9 +1,11 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/scripts/index.tsx',
     output: {
-        filename: './dist/bundle.js'
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
     },
     devtool: 'source-map',
     resolve: {
@@ -15,7 +17,16 @@ module.exports = {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_module/,
+            },
+            {
+                test: /\.pug$/,
+                use: 'pug-loader'
             }
         ]
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./src/pug/index.pug"
+        })
+    ]
 }
