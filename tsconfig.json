@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        "sourceMap": true,
+        "module": "CommonJS",
+        "noImplicitAny": true,
+        "target": "ES6",
+        "jsx": "react",
+        "lib": [
+            "dom",
+            "ES6"
+        ],
+    }
+}
