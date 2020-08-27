@@ -1,7 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Hello from "./components/Hello";
+import Counter from "./components/Counter";
+import store from './store';
+import { Provider } from 'react-redux';
 
 import '../stylus/index.styl';
 
-ReactDOM.render(<Hello content="hello world"/>, document.getElementById('root'))
+ReactDOM.render(
+    <Provider store={store}>
+        <Counter />
+    </Provider>
+    , document.getElementById('root')
+)
