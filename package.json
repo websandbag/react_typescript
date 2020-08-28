@@ -7,7 +7,9 @@
     "clean": "rm -rf ./node_module package-lock.json && npm i",
     "upgrade": "npm install typescript@latest react@latest react-dom@latest @types/react@latest @types/react-dom@latest webpack@latest webpack-dev-server@latest webpack-cli@latest ts-loader@latest clean-webpack-plugin@latest html-webpack-plugin@latest --save-exact",
     "build": "webpack -p",
-    "start": "webpack-dev-server -d --content-base ./dist"
+    "start": "webpack-dev-server -d --content-base ./dist",
+    "test:unit": "karma start karma.conf.js",
+    "test:all": "karma start karma.conf.js **/*.spec.tsx **/*.spec.ts"
   },
   "author": "",
   "license": "ISC",
