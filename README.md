@@ -1,4 +1,4 @@
 # react_typescript
 
 下記を元に勉強中
-[React + TypeScript + Webpackの最小構成](https://qiita.com/uryyyyyyy/items/63969d6ed9341affdffb)
+[React + Typescriptシリーズ（](https://qiita.com/uryyyyyyy/items/1f2022bbf914d65d635a)
