@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-app.use('/dist', express.static('dist'));
+app.use(express.static('dist'));
 
 app.get('/api/count', (req, res) => {
     res.contentType('application/json');
@@ -11,7 +11,8 @@ app.get('/api/count', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.status(200).send("Hello World");
+    // res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(3000, (err) => {
