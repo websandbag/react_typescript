@@ -10,9 +10,8 @@ app.get('/api/count', (req, res) => {
     setTimeout(() => res.json(obj), 500);
 });
 
-app.get('/', (req, res) => {
-    res.status(200).send("Hello World");
-    // res.sendFile(path.join(__dirname, 'index.html'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'))
 });
 
 app.listen(3000, (err) => {
