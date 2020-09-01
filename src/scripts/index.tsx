@@ -3,12 +3,12 @@ import * as ReactDOM from 'react-dom';
 import { Router } from 'react-router';
 import store from './store';
 import { Provider } from 'react-redux';
-import creatBrowserHistory from 'history/creatBrowserHistory'
+import createBrowserHistory from 'history/createBrowserHistory'
 import { Routes } from "./Routes";
 
 import '../stylus/index.styl';
 
-const history = creatBrowserHistory
+const history = createBrowserHistory()
 
 ReactDOM.render(
     <Provider store={store}>
