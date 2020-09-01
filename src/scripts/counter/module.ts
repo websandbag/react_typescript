@@ -86,13 +86,21 @@ export default function reducer(
     // actionのtypeに該当する処理を振り分ける
     switch (action.type) {
         case ActionNames.INC:
-            return { num: state.num + action.plusAmount }
+            return Object.assign({}, state, {
+                num: state.num + action.plusAmount
+            })
         case ActionNames.DEC:
-            return { num: state.num - action.minusAmount }
+            return Object.assign({}, state, {
+                num: state.num - action.minusAmount
+            })
         case ActionNames.FETCH_START:
-            return { loadingCount: state.loadingCount + 1 }
+            return Object.assign({}, state, {
+                loadingCount: state.loadingCount + 1
+            })
         case ActionNames.FETCH_FINISH:
-            return { loadingCount: state.loadingCount - 1 }
+            return Object.assign({}, state, {
+                loadingCount: state.loadingCount - 1
+            })
         default:
             return state
     }

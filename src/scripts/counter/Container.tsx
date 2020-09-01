@@ -27,7 +27,6 @@ export class ActionDispatcher {
     }
 
     public async asyncIncrement(): Promise<void> {
-        console.log('start increment')
         this.dispatch(fetchRequestStart())
 
         try {

@@ -8,6 +8,7 @@ interface Props {
 }
 
 export class Counter extends React.Component<Props, {}> {
+
     render() {
         return (
             <div>
