@@ -1,13 +1,15 @@
 import { Counter } from "./Counter";
-import { connect } from "react-redux";
+import { connect, MapDispatchToPropsParam, MapStateToPropsParam } from "react-redux";
 import { Dispatch } from "redux";
 import {
+    CounterState,
     decrementAmount,
     incrementAmount,
     fetchRequestStart,
     fetchRequestFinish
 } from './module';
 import { ReduxAction, ReduxState } from '../store';
+import { RouteComponentProps } from 'react-router';
 
 export class ActionDispatcher {
     constructor(private dispatch: (action: ReduxAction) => void) { }
@@ -51,9 +53,37 @@ export class ActionDispatcher {
     }
 }
 
-export default connect(
-    (state: ReduxState) => ({ value: state.counter }),
-    (dispatch: Dispatch<ReduxAction>) => ({
+const mapStateToProps: MapStateToPropsParam<{ 
+    value: CounterState,
+    param?: string
+}, any> = (
+    state: ReduxState, 
+    ownProps: RouteComponentProps<{ 
+        myParams: string | undefined 
+    }>
+) => {
+    if(ownProps.match.params.myParams === undefined) {
+        return {value: state.counter}
+    }
+    return {
+        value: state.counter,
+        param: ownProps.match.params.myParams
+    }
+}
+
+const mapDispatchToProps: MapDispatchToPropsParam<{actions: ActionDispatcher}, {}> 
+    = (dispatch: Dispatch<ReduxAction>) => ({
         actions: new ActionDispatcher(dispatch)
-    })
+    });
+
+
+
+export default connect(
+    // react-router を使用しない場合
+    // (state: ReduxState) => ({ value: state.counter }),
+    // (dispatch: Dispatch<ReduxAction>) => ({
+    //     actions: new ActionDispatcher(dispatch)
+    // })
+    mapStateToProps,
+    mapDispatchToProps
 )(Counter);
