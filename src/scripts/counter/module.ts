@@ -9,7 +9,7 @@ import { Action } from 'redux';
 enum ActionNames {
     INC = 'counter/increment',
     DEC = 'counter/decrement',
-    FETCH_START = 'counter/fetch_request_finish',
+    FETCH_START = 'counter/fetch_request_start',
     FETCH_FINISH = 'counter/fetch_request_finish'
 }
 

@@ -27,6 +27,7 @@ export class ActionDispatcher {
     }
 
     public async asyncIncrement(): Promise<void> {
+        console.log('start increment')
         this.dispatch(fetchRequestStart())
 
         try {
@@ -41,7 +42,6 @@ export class ActionDispatcher {
             }
 
             const json: { amount: number } = await response.json();
-
             this.dispatch(incrementAmount(json.amount))
 
         } catch (err) {
