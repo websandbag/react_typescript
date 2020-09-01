@@ -22,26 +22,26 @@ describe('ActionDispatcher', () => {
 
     it('asyncIncrement success', async (done) => {
         fetchMock.get('/api/count', { body: { amount: 100 }, status: 200 });
-        const spy: any = { dispatch: null }
-        spyOn(spy, 'dispach');
-        const actions = new ActionDispatcher(spy.dispatch)
-        await actions.asyncIncrement()
+        const spy: any = { dispatch: null };
+        spyOn(spy, 'dispatch');
+        const actions = new ActionDispatcher(spy.dispatch);
+        await actions.asyncIncrement();
         expect(spy.dispatch.calls.count()).toEqual(3);
         expect(spy.dispatch.calls.argsFor(0)[0]).toEqual(fetchRequestStart());
-        expect(spy.dispatch.calls.argsFor(0)[1]).toEqual(incrementAmount(100));
-        expect(spy.dispatch.calls.argsFor(0)[0]).toEqual(fetchRequestFinish());
+        expect(spy.dispatch.calls.argsFor(1)[0]).toEqual(incrementAmount(100));
+        expect(spy.dispatch.calls.argsFor(2)[0]).toEqual(fetchRequestFinish());
         done();
-    })
+    });
 
     it('asyncIncrement fail', async (done) => {
         fetchMock.get('/api/count', { body: {}, status: 400 });
-        const spy: any = { dispatch: null }
-        spyOn(spy, 'dispach');
-        const actions = new ActionDispatcher(spy.dispatch)
-        await actions.asyncIncrement()
+        const spy: any = { dispatch: null };
+        spyOn(spy, 'dispatch');
+        const actions = new ActionDispatcher(spy.dispatch);
+        await actions.asyncIncrement();
         expect(spy.dispatch.calls.count()).toEqual(2);
         expect(spy.dispatch.calls.argsFor(0)[0]).toEqual(fetchRequestStart());
-        expect(spy.dispatch.calls.argsFor(0)[1]).toEqual(fetchRequestFinish());
+        expect(spy.dispatch.calls.argsFor(1)[0]).toEqual(fetchRequestFinish());
         done();
-    })
+    });
 })
